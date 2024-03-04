@@ -4,7 +4,6 @@ variable "aws_region" {
   default     = "eu-west-3"
 }
 
-# Variables for Network Module
 variable "vpc_id" {
   description = "The VPC ID where network resources will be created."
   type        = string
