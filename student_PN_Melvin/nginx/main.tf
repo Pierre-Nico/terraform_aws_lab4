@@ -10,7 +10,7 @@ data "aws_ami" "nginx" {
 resource "aws_instance" "nginx_instance" {
   ami           = data.aws_ami.nginx.id
   instance_type = "t2.micro"
-  subnet_id     = element(var.subnet_ids, 0)  # Assuming deployment in the first subnet
+  subnet_id     = element(var.subnet_ids, 0)
   security_groups = [var.security_group_id]
 
   tags = {
@@ -21,5 +21,5 @@ resource "aws_instance" "nginx_instance" {
 resource "aws_lb_target_group_attachment" "nginx_tg_attachment" {
   target_group_arn = var.nginx_target_group_arn
   target_id        = aws_instance.nginx_instance.id
-  port             = 80  # Default Nginx port
+  port             = 80 
 }
