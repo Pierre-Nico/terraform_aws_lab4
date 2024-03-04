@@ -14,7 +14,7 @@ data "aws_ami" "tomcat_ami" {
 resource "aws_instance" "tomcat_instance" {
   ami           = data.aws_ami.tomcat_ami.id
   instance_type = "t2.micro"
-  subnet_id     = element(var.subnet_ids, 0)  # Using the first subnet
+  subnet_id     = element(var.subnet_ids, 0)
   security_groups = [var.security_group_id]
 
   tags = {
